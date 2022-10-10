@@ -1,0 +1,915 @@
+body {
+    font-size: 20px;
+    font-family: 'Lato', sans-serif;
+    font-weight: 400;
+    color: rgba(148, 153, 195, 1);
+    overflow: hidden;
+    background: rgba(26, 28, 72, 1);
+}
+
+h1 {
+    font-size: 34px;
+    font-weight: 700;
+    font-style: normal;
+    line-height: 100%;
+    color: rgba(255, 255, 255, 1);
+}
+
+h2 {
+    font-size: 30px;
+    font-weight: 600;
+    color: rgba(164, 164, 164, 1);
+}
+
+h3 {
+    font-size: 20px;
+    font-weight: 400;
+    margin-bottom: 5px;
+}
+
+/* App */
+
+.App {
+    width: 100%;
+    height: 100vh;
+    display: grid;
+    grid-template-areas: 'title title title'
+                         'list rocket list-numbers';
+    grid-template-rows: 10% 90%;
+    grid-template-columns: 20.5% 57% 22.5%;                         
+    background-image: url('../Images/Background.png');
+    background-size: cover;
+}
+
+.initial-page {
+    content: "";
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background-color: rgba(26, 28, 72, 1);
+    background-image: url('../Logos/spaceXLogo.svg');
+    background-position: 60% 2%;
+    background-size: 50%;
+    background-repeat: no-repeat;
+    z-index: 999;
+}
+
+.initial-progress {
+    width: 7.5%;
+    height: auto;
+    margin-top: 30%;
+}
+
+.initial-progress .CircularProgressbar-path{
+    stroke: rgba(255, 255, 255, 1);
+    stroke-width: 7px;
+    -webkit-transition: stroke-dashoffset 1.5s linear 0s;
+    transition: stroke-dashoffset 1.5s linear 0s;
+}
+
+.initial-progress .CircularProgressbar-text{
+    fill: rgba(255, 255, 255, 1);
+    font-size: 20px;
+}
+
+.title {
+    grid-area: title;
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.rocket-name {
+    margin-bottom: 10px;
+}
+
+.rocket-type {
+    margin-bottom: 5px;
+}
+
+.mission-list-div {
+    grid-area: list;
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.mission-list {
+    width: 85%;
+    height: 90%;
+    overflow-y: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.mission-list::-webkit-scrollbar {
+    display: none;
+}
+
+.mission-list-item {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    padding-bottom: 40px;
+}
+
+.mission-list-item:hover {
+    cursor: pointer;
+    color: rgba(255, 255, 255, 1);
+}
+
+.mission-list-icon {
+    width: 35px;
+    height: auto;
+    padding-right: 15px;
+}
+
+.mission-list-name {
+    margin-top: 10px;
+}
+
+.mission-list-site {
+    padding-left: 50px;
+    font-size: 16px;
+    color: rgba(148, 153, 195, 0.5);
+}
+
+.rocket-div {
+    grid-area: rocket;
+    width: 100%;
+    display: grid;
+    grid-template-areas: "upper upper upper"
+                         "middle01 image middle02"
+                         "characteristics image none";
+    grid-template-rows: 26.1% 20.9% 53%;
+    grid-template-columns: 1fr 1fr 1fr;
+    row-gap: 16px;
+    column-gap: 0;
+}
+
+.upperClocksDiv {
+    grid-area: upper;
+    width: 92.3%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    justify-self: center;
+}
+
+.lowerClocksDiv01, .lowerClocksDiv02 {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    justify-self: center;
+}
+
+.lowerClocksDiv01 {
+    grid-area: middle01;
+}
+
+.lowerClocksDiv02 {
+    grid-area: middle02;
+}
+
+.upperClock {
+    width: 11.22vw;
+    height: 12.12vw;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    background-image: url('../Logos/outerRing.svg');
+    background-size: 90%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.upperClock::before,
+.lowerClock01::before, 
+.lowerClock02::before {
+    content: "";
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    background: rgba(255, 255, 255, 1);
+    opacity: 0.02;
+    border-radius: 10px;
+}
+
+.lowerClock01, .lowerClock02 {
+    width: 9.05vw;
+    height: 9.7vw;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    background-image: url('../Logos/outerRing.svg');
+    background-size: 90%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.upperClock img {
+    width: 85.8%;
+    height: auto;
+}
+
+.upperClock p, .upperClock h3, .upperClock h4,
+.lowerClock01 p, .lowerClock01 h3, .lowerClock01 h4,
+.lowerClock02 p, .lowerClock02 h3, .lowerClock02 h4 {
+    position: relative;
+    color: rgba(255, 255, 255, 1);
+}
+
+.upperClock p,
+.lowerClock01 p,
+.lowerClock02 p {
+    font-size: 12px;
+    font-weight: 400;
+    margin: 20px 0px 8px 0px;
+}
+
+.upperClock h3,
+.lowerClock01 h3,
+.lowerClock02 h3 {
+    font-size: 32px;
+    font-weight: 500;
+    margin-bottom: 12px;
+}
+
+.upperClock h4,
+.lowerClock01 h4,
+.lowerClock02 h4 {
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.rocket-image-div {
+    grid-area: image;
+}
+
+.rocket-image {
+    width: 160%;
+    margin-left: -30%;
+    margin-top: -20%;
+    height: auto;
+}
+
+.rocket-image-shadow {
+    width: 140%;
+    height: 10%; 
+    margin-top: -40%;
+    margin-left: -20%;
+    filter: blur(12.5px);
+    mix-blend-mode: overlay;
+    background: radial-gradient(50% 50% at 50% 50%, #000000 21.87%, rgba(0, 0, 0, 0) 100%);
+}
+
+.rocket-animation {
+    animation-name: rocketAnimation;
+    animation-duration: 1.25s;
+}
+
+@keyframes rocketAnimation {
+    0% {
+        transform: rotate(1deg);
+    }
+    
+    5% {
+        transform: rotate(-1deg);
+    }
+
+    10% {
+        transform: rotate(3deg);
+    }
+
+    15% {
+        transform: rotate(-3deg);
+    }
+
+    20% {
+        transform: rotate(6deg);
+    }
+
+    25% {
+        transform: rotate(-6deg);
+    }
+
+    30% {
+        opacity: 1;
+    }
+
+    70% {
+        transform: translateY(-2000px);
+        opacity: 0;
+    }
+
+    80% {
+        opacity: 0;
+        transform: translateY(1000px);
+    }
+
+    81% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+}
+
+.rocket-shadow-animation {
+    animation-name: rocketShadowAnimation;
+    animation-duration: 1.25s;
+}
+
+@keyframes rocketShadowAnimation {
+    0% {
+        opacity: 1;
+    }
+
+    89% {
+        opacity: 0;
+        transform: translateY(0);
+    }
+
+    90% {
+        transform: translateY(800px);
+    }
+
+    91% {
+        transform: translateY(800px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.rocket-characteristics {
+    grid-area: characteristics;
+    width: 75%;
+    margin-left: 5%;
+    margin-top: 15%;
+}
+
+.rocket-characteristics h2 {
+    width: 90%;
+    font-size: 24px;
+    font-weight: 400;
+    padding-bottom: 20px;
+    color: rgba(148, 153, 195, 1);
+    border-bottom: 2px solid rgba(148, 153, 195, 0.5);
+}
+
+.rocket-characteristic-list-div {
+    display: flex;
+    flex-direction: row;
+}
+
+.rocket-characteristic-list,
+.rocket-characteristic-values {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.rocket-characteristic-list {
+    width: 40%;
+    height: 150px;
+    align-items: flex-start;
+}
+
+.rocket-characteristic-values {
+    width: 40%;
+    align-items: flex-end;
+}
+
+.rocket-characteristic-item {
+    font-size: 18px;
+    font-weight: 400;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.rocket-characteristic-value {
+    font-weight: 500;
+    color: rgba(255, 255, 255, 1);
+}
+
+.rocket-numbers-div {
+    grid-area: list-numbers;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.rocket-numbers {
+    width: 70%;
+    height: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-top: 10%;
+}
+
+.rocket-number-item {
+    width: 100%;
+    height: 50px;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: space-between;
+    flex-wrap: wrap;
+}
+
+.attribute {
+    width: 100%;
+    height: auto;
+    font-size: 16px;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 1);
+}
+
+.loading-bar-background {
+    width: 200px;
+    height: 10px;
+    margin-top: 5px;
+    border-radius: 5px;
+    background-color: rgba(148, 153, 195, 0.2);
+}
+
+.loading-bar-progress {
+    width: 120px;
+    height: 10px;
+    margin: 5px 0px 0px -200px;
+    border-radius: 5px;
+    background-color: rgba(41, 139, 254, 1);
+}
+
+.attribute-units {
+    position: absolute;
+    top: 25px;
+    right: 0;
+    color: rgba(255, 255, 255, 1);
+}
+
+.spaceX-logo {
+    opacity: 0.75;
+    width: 125%;
+}
+
+.speedometer {
+    width: 92%;
+    height: auto;
+    position: absolute;
+    top: 30px;
+    transform: rotate(-138deg);
+    opacity: 0.9;
+}
+
+.pp02 .CircularProgressbar-path{
+    stroke: rgba(255, 214, 48, 1);
+}
+
+.temp .CircularProgressbar-path{
+    stroke: rgba(231, 45, 45, 1);
+}
+
+.press .CircularProgressbar-path{
+    stroke: rgba(255, 214, 48, 1);
+}
+
+.co2 .CircularProgressbar-path{
+    stroke: rgba(41, 139, 254, 1);
+}
+
+.loopA, .loopB, .pwr1, .pwr2 {
+    top: 23px;
+}
+
+.loopA .CircularProgressbar-path,
+.loopB .CircularProgressbar-path,
+.pwr1 .CircularProgressbar-path,
+.pwr2 .CircularProgressbar-path {
+    stroke: rgba(41, 139, 254, 1);
+}
+
+@media only screen and (max-width: 1500px) {
+    h1 {
+        font-size: 30px;
+    }
+    
+    h2 {
+        font-size: 26px;
+    }
+
+    .rocket-characteristics h2 {
+        font-size: 22px;
+    }
+
+    .rocket-characteristic-item,
+    .rocket-characteristic-value p {
+        font-size: 18px;
+    }
+
+    .rocket-characteristic-values {
+        margin-left: 30px;
+    }
+
+    .upperClock p, .lowerClock01 p, .lowerClock02 p {
+        font-size: 12px;
+    }
+
+    .upperClock h3, .lowerClock01 h3, .lowerClock02 h3 {
+        font-size: 28px;
+    }
+
+    .upperClock h4, .lowerClock01 h4, .lowerClock02 h4 {
+        font-size: 16px;
+    }
+
+    .speedometer {
+        width: 93%;
+        top: 20px;
+    }
+
+    .loopA, .loopB, .pwr1, .pwr2 {
+        width: 93%;
+        top: 16px;
+    }
+
+    .rocket-numbers {
+        width: 89%;
+        margin-left: -10px;
+    }
+
+    .attribute-units {
+        font-size: 16px;
+    }
+}
+
+@media only screen and (max-width: 1280px) {
+    html, body {
+        overflow: hidden !important;
+    }
+
+    .App {
+        grid-template-areas: 'title'
+                             'rocket'
+                             'list';
+        grid-template-rows: 9% 76% 11%;
+        grid-template-columns: 100%;                         
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        row-gap: 20px;
+    }
+
+    .title {
+        grid-area: title;
+        align-self: flex-end;
+    }
+
+    .rocket-div {
+        grid-area: rocket;
+        display: grid;
+        grid-template-areas: 'upper-rocket-numbers upper-rocket-numbers'
+                             'lower-rocket-numbers1 lower-rocket-numbers2'
+                             'progress-values rocket'
+                             'characteristics rocket';
+        grid-template-rows: 19% 19% 38% 19%;
+        grid-template-columns: 50% 50%;
+        row-gap: 20px;               
+    }
+
+    .upperClocksDiv {
+        grid-area: upper-rocket-numbers;
+        width: 100%;
+    }
+
+    .upperClock {
+        width: 20%;
+        height: 100%;
+    }
+
+    .lowerClocksDiv01 {
+        grid-area: lower-rocket-numbers1;
+        justify-content: center;
+        margin-left: 4%;
+    }
+
+    .lowerClock01, .lowerClock02 {
+        width: 40%;
+        height: 100%;
+    }
+
+    .lowerClockMiddle {
+        margin-left: 8%;
+    }
+
+    .lowerClocksDiv02 {
+        grid-area: lower-rocket-numbers2;
+        justify-content: center;
+        margin-left: -4%;
+    }
+    
+    .rocket-image-div {
+        grid-area: rocket;
+        width: 70%;
+        height: auto;
+        justify-self: center;
+        align-self: center;
+        padding-bottom: 11%;
+        z-index: 999;
+    }
+
+    .rocket-numbers-div {
+        height: auto;
+        grid-area: progress-values;
+        position: absolute;
+        margin-top: 440px;
+        margin-left: 20px;
+    }
+
+    .spaceX-logo {
+        opacity: 0.05;
+        width: 155%;
+        margin-top: -10%;
+        margin-left: 35%;
+        z-index: 0;
+    }
+
+    .rocket-characteristics {
+        grid-area: characteristics;
+        margin-top: 0;
+        margin-left: 0;
+        justify-self: center;
+        align-self: center;
+    }
+
+    .rocket-characteristics h2 {
+        padding-bottom: 5px;
+        color: rgba(255, 255, 255, 1);
+        border-bottom: 1px solid rgba(255, 255, 255, 1);
+    }
+
+    .rocket-characteristic-list,
+    .rocket-characteristic-values {
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        margin-top: 10px;
+    }
+
+    .mission-list-div {
+        grid-area: list;
+        width: auto;
+        max-height: 150px;
+        justify-content: space-around;
+        z-index: 999;
+    }
+
+    .mission-list {
+        width: 95%;
+        display: flex;
+        flex-direction: row;
+        margin-left: 2%;
+    }
+
+    .mission-list-item {
+        width: 40%;
+        height: 100px;
+        flex-shrink: 0;
+        padding-bottom: 0;
+        align-items: center;
+    }
+
+    .mission-list-icon {
+        width: 30px;
+        height: 30px;
+        padding-right: 15px;
+    }
+
+    .mission-list-name {
+        padding-right: 15px;
+        font-size: 18px;
+        color: rgba(255, 255, 255, 1);
+    }
+
+    .mission-list-site {
+        padding-left: 0;
+        color: rgba(255, 255, 255, 0.5);
+    }
+
+    .speedometer {
+        top: 10px;
+    }
+
+    .initial-progress .CircularProgressbar-text{
+        font-size: 24px;
+    }
+
+    .initial-progress {
+        width: 22%;
+        margin-top: 30%;
+    }
+}
+
+@media only screen and (max-width: 550px) {
+    html, body {
+        overflow: hidden !important;
+    }
+
+    .App {
+        grid-template-rows: 10% 76% 14%;
+        row-gap: 0;
+    }
+
+    .rocket-name {
+        font-size: 24px;
+    }
+    
+    .rocket-type {
+        font-size: 18px;
+    }
+
+    .rocket-div {
+        grid-template-rows: 19% 19% 38% 25%;
+        row-gap: 0;      
+    }
+
+    .upperClock {
+        width: 20%;
+        height: 70%;
+    }
+
+    .lowerClock01, .lowerClock02 {
+        width: 40%;
+        height: 70%;
+    }
+
+    .upperClock p, .lowerClock01 p, .lowerClock02 p {
+        font-size: 10px;
+        margin-top: 8px;
+    } 
+
+    .upperClock h3, .lowerClock01 h3, .lowerClock02 h3 {
+        font-size: 16px;
+        margin-bottom: 4px;
+    }
+
+    .upperClock h4, .lowerClock01 h4, .lowerClock02 h4 {
+        font-size: 10px;
+    } 
+    
+    .rocket-image-div {
+        grid-area: rocket;
+        width: 70%;
+        justify-self: flex-end;
+        align-self: flex-end;
+        padding-bottom: 0;
+        opacity: 0.5;
+    }
+
+    .rocket-numbers-div {
+        height: auto;
+        margin-top: 310px;
+        margin-left: 25px;
+        align-items: flex-start;
+    }
+
+    .rocket-numbers {
+        width: 70%;
+        margin-left: 0;
+    }
+
+    .rocket-number-item {
+        height: 40px;
+    }
+
+    .attribute, .attribute-units {
+        font-size: 14px;
+    }
+
+    .loading-bar-background, .loading-bar-progress {
+        height: 7.5px;
+    }
+
+    .spaceX-logo {
+        opacity: 0.05;
+        width: 100%;
+        margin-top: -10%;
+        margin-left: -10%;
+    }
+
+    .rocket-characteristics {
+        grid-area: characteristics;
+        width: 100%;
+        margin-top: 0;
+        margin-left: 25%;
+    }
+
+    .rocket-characteristics h2 {
+        font-size: 16px;
+        padding-bottom: 2.5px;
+    }
+
+    .rocket-characteristic-list,
+    .rocket-characteristic-values {
+        width: 35%;
+        margin-top: 10px;
+    }
+
+    .rocket-characteristic-list {
+        height: 100px;
+    }
+
+    .mission-list-div {
+        grid-area: list;
+        width: auto;
+        max-height: 150px;
+        justify-content: space-around;
+        z-index: 999;
+    }
+
+    .mission-list {
+        width: 95%;
+        display: flex;
+        flex-direction: row;
+        margin-left: 2%;
+    }
+
+    .mission-list-item {
+        width: 40%;
+        height: 100px;
+        flex-shrink: 0;
+        padding-bottom: 0;
+        align-items: center;
+    }
+
+    .mission-list-icon {
+        width: 30px;
+        height: 30px;
+        padding-right: 15px;
+    }
+
+    .mission-list-name {
+        padding-right: 15px;
+        font-size: 18px;
+        color: rgba(255, 255, 255, 1);
+    }
+
+    .mission-list-site {
+        padding-left: 0;
+        color: rgba(255, 255, 255, 0.5);
+    }
+
+    .speedometer {
+        top: 10px;
+    }
+
+    .initial-page {
+        background-position: 60% 15%;
+    }
+
+    .initial-progress {
+        width: 20%;
+        margin-top: 30%;
+    }
+
+    .initial-progress .CircularProgressbar-text{
+        font-size: 24px;
+    }
+}
